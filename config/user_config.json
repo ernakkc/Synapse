@@ -1,0 +1,9 @@
+{
+    "OLLAMA": {
+        "HOST": "http://localhost:11434",
+        "MODEL": "gpt-oss:120b-cloud"
+    },
+    "AI_CONFIG": {
+        "MIN_CONFIDENCE_THRESHOLD": 0.7
+    }
+}
