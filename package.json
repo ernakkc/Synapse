@@ -2,7 +2,35 @@
   "name": "synapse",
   "version": "1.0.0",
   "description": "> Cross-platform AI Assistant with centralized brain architecture",
-  "keywords": ["ai", "assistant", "cross-platform", "brain architecture", "modularity", "scalability", "extensibility", "open-source", "community-driven", "privacy-focused", "secure", "customizable", "personalized", "intelligent", "efficient", "user-friendly", "collaborative", "innovative", "cutting-edge", "state-of-the-art", "next-generation", "revolutionary", "transformative", "game-changing", "disruptive", "forward-thinking", "visionary"],
+  "keywords": [
+    "ai",
+    "assistant",
+    "cross-platform",
+    "brain architecture",
+    "modularity",
+    "scalability",
+    "extensibility",
+    "open-source",
+    "community-driven",
+    "privacy-focused",
+    "secure",
+    "customizable",
+    "personalized",
+    "intelligent",
+    "efficient",
+    "user-friendly",
+    "collaborative",
+    "innovative",
+    "cutting-edge",
+    "state-of-the-art",
+    "next-generation",
+    "revolutionary",
+    "transformative",
+    "game-changing",
+    "disruptive",
+    "forward-thinking",
+    "visionary"
+  ],
   "homepage": "https://github.com/ernakkc/Synapse#readme",
   "bugs": {
     "url": "https://github.com/ernakkc/Synapse/issues"
@@ -22,7 +50,7 @@
     "node": ">=18.0.0"
   },
   "type": "module",
-  "main": "dist/src/index.js",
+  "main": "dist/main.js",
   "directories": {
     "doc": "docs",
     "test": "tests"
@@ -30,28 +58,24 @@
   "scripts": {
     "------------------ DEV ------------------": "",
     "dev": "npm run build:main && concurrently -k \"npm run dev:renderer\" \"npm run dev:main\"",
-    "dev:main": "electronmon .",
+    "dev:main": "npm run build:main && concurrently -k \"tsup --watch\" \"electronmon dist/main.js\"",
     "dev:renderer": "vite",
-    
     "------------------ BUILD ------------------": "",
     "build": "tsc && vite build",
-    "build:main": "tsc -p tsconfig.node.json",
+    "build:main": "tsup",
     "compile": "tsc --noEmit",
-    
     "------------------ RELEASE ------------------": "",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "dist:win": "electron-builder --win",
     "dist:mac": "electron-builder --mac",
     "dist:linux": "electron-builder --linux",
-    
     "------------------ QUALITY ------------------": "",
     "lint": "eslint . --ext .ts,.tsx",
     "format": "prettier --write .",
     "test": "vitest",
     "test:e2e": "playwright test",
     "prepare": "husky install",
-    
     "------------------ UTILS ------------------": "",
     "postinstall": "electron-builder install-app-deps",
     "clean": "rimraf dist release node_modules"
@@ -66,7 +90,7 @@
     "langchain": "^0.1.12",
     "openai": "^4.26.0",
     "telegraf": "^4.15.3",
-    "winston": "^3.11.0",
+    "winston": "^3.19.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
@@ -89,6 +113,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rimraf": "^5.0.5",
+    "tsc-alias": "^1.8.16",
+    "tsup": "^8.5.1",
     "typescript": "^5.3.3",
     "vite": "^5.0.12",
     "vitest": "^1.2.2"
@@ -132,5 +158,4 @@
       "prettier --write"
     ]
   }
-
 }
