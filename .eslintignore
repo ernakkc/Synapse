@@ -1,0 +1,37 @@
+# Editor & IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+release/
+out/
+
+# Dependencies
+node_modules/
+
+# Testing
+coverage/
+
+# Logs
+logs/
+*.log
+
+# Temp
+.cache/
+tmp/
+temp/
+*.tmp
+
+# Database
+*.db
+*.sqlite
+data/
