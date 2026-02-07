@@ -1,10 +1,1 @@
-#!/usr/bin/env node
-
-/**
- * Husky Git Hook - Pre-commit
- * Runs before each commit to ensure code quality
- */
-
-console.log('🔍 Running pre-commit checks...\n');
-
-process.exit(0);
+npx lint-staged

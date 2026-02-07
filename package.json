@@ -84,7 +84,7 @@
     "clean": "rimraf dist release node_modules/.cache",
     "clean:all": "rimraf dist release node_modules",
     "postinstall": "electron-builder install-app-deps",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.17.0",
