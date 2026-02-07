@@ -1,0 +1,136 @@
+{
+  "name": "synapse",
+  "version": "1.0.0",
+  "description": "> Cross-platform AI Assistant with centralized brain architecture",
+  "keywords": ["ai", "assistant", "cross-platform", "brain architecture", "modularity", "scalability", "extensibility", "open-source", "community-driven", "privacy-focused", "secure", "customizable", "personalized", "intelligent", "efficient", "user-friendly", "collaborative", "innovative", "cutting-edge", "state-of-the-art", "next-generation", "revolutionary", "transformative", "game-changing", "disruptive", "forward-thinking", "visionary"],
+  "homepage": "https://github.com/ernakkc/Synapse#readme",
+  "bugs": {
+    "url": "https://github.com/ernakkc/Synapse/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ernakkc/Synapse.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Eren Akkoç",
+    "email": "ern.akkc@gmail.com",
+    "url": "https://erenakkoc.com"
+  },
+  "private": false,
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "type": "module",
+  "main": "dist/src/index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "------------------ DEV ------------------": "",
+    "dev": "npm run build:main && concurrently -k \"npm run dev:renderer\" \"npm run dev:main\"",
+    "dev:main": "electronmon .",
+    "dev:renderer": "vite",
+    
+    "------------------ BUILD ------------------": "",
+    "build": "tsc && vite build",
+    "build:main": "tsc -p tsconfig.node.json",
+    "compile": "tsc --noEmit",
+    
+    "------------------ RELEASE ------------------": "",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "dist:win": "electron-builder --win",
+    "dist:mac": "electron-builder --mac",
+    "dist:linux": "electron-builder --linux",
+    
+    "------------------ QUALITY ------------------": "",
+    "lint": "eslint . --ext .ts,.tsx",
+    "format": "prettier --write .",
+    "test": "vitest",
+    "test:e2e": "playwright test",
+    "prepare": "husky install",
+    
+    "------------------ UTILS ------------------": "",
+    "postinstall": "electron-builder install-app-deps",
+    "clean": "rimraf dist release node_modules"
+  },
+  "dependencies": {
+    "better-sqlite3": "^9.4.0",
+    "dotenv": "^16.4.1",
+    "electron-log": "^5.1.0",
+    "electron-store": "^8.1.0",
+    "electron-updater": "^6.1.8",
+    "fs-extra": "^11.2.0",
+    "langchain": "^0.1.12",
+    "openai": "^4.26.0",
+    "telegraf": "^4.15.3",
+    "winston": "^3.11.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.9",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.11.16",
+    "@types/react": "^18.2.52",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "concurrently": "^8.2.2",
+    "electron": "^28.2.1",
+    "electron-builder": "^24.9.1",
+    "electronmon": "^2.0.2",
+    "eslint": "^8.56.0",
+    "husky": "^9.0.10",
+    "lint-staged": "^15.2.1",
+    "prettier": "^3.2.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "vitest": "^1.2.2"
+  },
+  "build": {
+    "appId": "com.synapse.app",
+    "productName": "Synapse",
+    "copyright": "Copyright © 2026 ${author}",
+    "directories": {
+      "output": "release",
+      "buildResources": "resources"
+    },
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ],
+    "publish": {
+      "provider": "github",
+      "owner": "ernakkc",
+      "repo": "Synapse"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "resources/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "resources/icon.icns",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "resources/icon.png",
+      "category": "Utility"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+
+}
