@@ -1,9 +1,13 @@
 {
-    "OLLAMA": {
-        "HOST": "http://localhost:11434",
-        "MODEL": "gpt-oss:120b-cloud"
+    "TELEGRAM" : {
+        "BOT_TOKEN": "123456789:ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        "ADMIN_ID": 1234567890
     },
-    "AI_CONFIG": {
+    "OLLAMA": {
+        "MODEL": "gpt-oss:120b-cloud",
+        "BASE_URL": "http://localhost:11434"
+    },
+    "AI_SETTINGS": {
         "MIN_CONFIDENCE_THRESHOLD": 0.7
     }
 }

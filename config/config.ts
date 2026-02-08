@@ -1,41 +1,44 @@
-import userConfigJson from './user_config.json';
-import dotenv from 'dotenv';
+import userConfigJson from "./user_config.json";
+import dotenv from "dotenv";
 dotenv.config();
 
 
-const DEFAULT_CONFIG = {
-    OLLAMA : {
-        OLLAMA_MODEL: "llama3",
-        OLLAMA_HOST: "http://localhost:11434",
-    },
-    AI_CONFIG: {
-        MIN_CONFIDENCE_THRESHOLD: 0.7,
-    },
+function getEnv(key: string): string {
+    if (!process.env[key]) {
+        console.warn(`⚠️  Environment variable ${key} is not set. Using default value.`);
+    } else {
+        console.log(`✅ Loaded environment variable ${key}`);
+    }
+    return process.env[key] || "";
 }
 
-const getEnv = (key: string): string => {
-  const value = process.env[key];
-  if (!value) {
-    throw new Error(`❌ CONFIG HATASI: ${key} .env dosyasında bulunamadı!`);
-  }
-  return value;
+
+
+const DEFAULT_CONFIG = {
+    TELEGRAM: {
+        BOT_TOKEN: "",
+        ADMIN_ID: "",
+    },
+    OLLAMA: {
+        MODEL: "llama3",
+        BASE_URL: "http://localhost:11434",
+    },
+    AI_SETTINGS: {
+        MIN_CONFIDENCE_THRESHOLD: 0.7,
+    }
 };
 
 
 export const CONFIG = {
-    OLLAMA: {
-        MODEL: userConfigJson.OLLAMA?.MODEL || DEFAULT_CONFIG.OLLAMA.OLLAMA_MODEL,
-        HOST: userConfigJson.OLLAMA?.HOST || DEFAULT_CONFIG.OLLAMA.OLLAMA_HOST,
-    },
-    AI_CONFIG: {
-        MIN_CONFIDENCE_THRESHOLD: userConfigJson.AI_CONFIG?.MIN_CONFIDENCE_THRESHOLD || DEFAULT_CONFIG.AI_CONFIG.MIN_CONFIDENCE_THRESHOLD,
-    },
     TELEGRAM: {
-        BOT_TOKEN: getEnv('TELEGRAM_BOT_TOKEN'),
-        ADMIN_ID: getEnv('ADMIN_ID'),
+        BOT_TOKEN: getEnv("TELEGRAM_BOT_TOKEN") || DEFAULT_CONFIG.TELEGRAM.BOT_TOKEN,
+        ADMIN_ID: getEnv("ADMIN_ID") || DEFAULT_CONFIG.TELEGRAM.ADMIN_ID,
+    },
+    OLLAMA: {
+        MODEL: userConfigJson.OLLAMA?.MODEL || DEFAULT_CONFIG.OLLAMA.MODEL,
+        BASE_URL: userConfigJson.OLLAMA?.BASE_URL || DEFAULT_CONFIG.OLLAMA.BASE_URL,
+    },
+    AI_SETTINGS: {
+        MIN_CONFIDENCE_THRESHOLD: userConfigJson.AI_SETTINGS?.MIN_CONFIDENCE_THRESHOLD || DEFAULT_CONFIG.AI_SETTINGS.MIN_CONFIDENCE_THRESHOLD,
     }
-}
-
-
-
-
+};

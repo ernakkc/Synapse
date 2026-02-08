@@ -1,7 +1,7 @@
 {
   "name": "synapse",
   "version": "1.0.0",
-  "description": "Enterprise-grade AI Assistant with Clean Architecture - Multi-interface platform (Telegram, Electron, CLI) with pluggable AI providers",
+  "description": "> Synapse is an AI-powered assistant that provides intelligent responses to user queries. Cross-platform AI Assistant with centralized brain architecture built on Electron, React & TypeScript.",
   "keywords": [
     "ai",
     "assistant",
@@ -28,148 +28,31 @@
     "type": "git",
     "url": "git+https://github.com/ernakkc/Synapse.git"
   },
+  "private": false,
   "license": "MIT",
   "author": {
-    "name": "Eren Akkoç",
+    "name": "Eren Akkoc",
     "email": "ern.akkc@gmail.com",
     "url": "https://erenakkoc.com"
   },
-  "private": false,
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
   },
   "type": "module",
-  "main": "dist/main.js",
-  "directories": {
-    "doc": "docs",
-    "test": "tests"
-  },
+  "main": "dist/index.js",
   "scripts": {
-    "------------------ DEVELOPMENT ------------------": "",
-    "dev": "npm run build:main && concurrently -k \"npm run dev:renderer\" \"npm run dev:main\"",
-    "dev:main": "npm run build:main && concurrently -k \"tsup --watch\" \"electronmon dist/main.js\"",
-    "dev:renderer": "vite",
-    "dev:telegram": "tsx watch src/interfaces/telegram/bot.ts",
-    "dev:cli": "tsx watch src/interfaces/cli/index.ts",
-    "------------------ BUILD ------------------": "",
-    "build": "npm run build:clean && npm run build:main && npm run build:renderer",
-    "build:main": "tsup",
-    "build:renderer": "vite build",
-    "build:clean": "rimraf dist",
-    "type-check": "tsc --noEmit",
-    "compile": "tsc --noEmit",
-    "------------------ DISTRIBUTION ------------------": "",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder",
-    "dist:win": "electron-builder --win",
-    "dist:mac": "electron-builder --mac",
-    "dist:linux": "electron-builder --linux",
-    "------------------ DATABASE ------------------": "",
-    "db:migrate": "tsx scripts/migrate.ts",
-    "db:seed": "tsx scripts/seed.ts",
-    "db:reset": "tsx scripts/reset-db.ts",
     "------------------ TESTING ------------------": "",
-    "test": "vitest",
-    "test:unit": "vitest run --dir tests/unit",
-    "test:integration": "vitest run --dir tests/integration",
-    "test:e2e": "playwright test",
-    "test:coverage": "vitest run --coverage",
-    "test:watch": "vitest watch",
-    "------------------ CODE QUALITY ------------------": "",
-    "lint": "eslint . --ext .ts,.tsx",
-    "lint:fix": "eslint . --ext .ts,.tsx --fix",
-    "format": "prettier --write \"src/**/*.{ts,tsx,json,md}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx,json,md}\"",
-    "--- UTILITIES ------------------": "",
-    "clean": "rimraf dist release node_modules/.cache",
-    "clean:all": "rimraf dist release node_modules",
-    "postinstall": "electron-builder install-app-deps",
-    "prepare": "husky"
+    "test": "",
+    "test:config": "tsx config/config.ts",
+    "test:logger": "tsx tests/logger_test.ts"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.17.0",
-    "better-sqlite3": "^9.4.0",
-    "dotenv": "^16.4.1",
-    "electron-log": "^5.1.0",
-    "electron-store": "^8.1.0",
-    "electron-updater": "^6.1.8",
-    "fs-extra": "^11.2.0",
-    "langchain": "^0.1.12",
-    "openai": "^4.26.0",
-    "telegraf": "^4.15.3",
-    "winston": "^3.19.0",
-    "zod": "^3.22.4"
+    "dotenv": "^17.2.4"
   },
   "devDependencies": {
-    "@playwright/test": "^1.41.2",
-    "@types/better-sqlite3": "^7.6.9",
-    "@types/fs-extra": "^11.0.4",
-    "@types/node": "^20.11.16",
-    "@types/react": "^18.2.52",
-    "@types/react-dom": "^18.2.18",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "@vitejs/plugin-react": "^4.2.1",
-    "@vitest/coverage-v8": "^1.2.2",
-    "concurrently": "^8.2.2",
-    "electron": "^28.2.1",
-    "electron-builder": "^24.9.1",
-    "electronmon": "^2.0.2",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "husky": "^9.0.10",
-    "lint-staged": "^15.2.1",
-    "prettier": "^3.2.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rimraf": "^5.0.5",
-    "tsc-alias": "^1.8.16",
-    "tsx": "^4.7.1",
-    "tsup": "^8.5.1",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.12",
-    "vitest": "^1.2.2"
-  },
-  "build": {
-    "appId": "com.synapse.app",
-    "productName": "Synapse",
-    "copyright": "Copyright © 2026 ${author}",
-    "directories": {
-      "output": "release",
-      "buildResources": "resources"
-    },
-    "files": [
-      "dist/**/*",
-      "package.json"
-    ],
-    "publish": {
-      "provider": "github",
-      "owner": "ernakkc",
-      "repo": "Synapse"
-    },
-    "win": {
-      "target": "nsis",
-      "icon": "resources/icon.ico"
-    },
-    "mac": {
-      "target": "dmg",
-      "icon": "resources/icon.icns",
-      "hardenedRuntime": true,
-      "gatekeeperAssess": false
-    },
-    "linux": {
-      "target": "AppImage",
-      "icon": "resources/icon.png",
-      "category": "Utility"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{json,md}": [
-      "prettier --write"
-    ]
+    "@types/node": "^25.2.2",
+    "tsx": "^4.21.0",
+    "winston": "^3.19.0"
   }
 }
