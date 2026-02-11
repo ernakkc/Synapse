@@ -1,5 +1,5 @@
 // import { startTelegram } from "./interfaces/telegram";
-// import { startCLI } from "./interfaces/cli";
+import { startCLI } from "./interfaces/cli";
 // import { startElectron } from "./interfaces/electron";
 
 
@@ -10,12 +10,6 @@ async function startTelegram() {
     // Simulate async initialization
     await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log("Telegram interface started.");
-}
-
-async function startCLI() {
-    console.log("Starting CLI interface...");
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    console.log("CLI interface started.");
 }
 
 async function startElectron() {
