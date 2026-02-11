@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ES2022",
@@ -16,7 +17,7 @@
     "noImplicitReturns": true,
 
     /* Module Resolution Options */
-    "moduleResolution": "node",
+    "moduleResolution": "node10",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     
