@@ -40,8 +40,17 @@
     "npm": ">=8.0.0"
   },
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/main.js",
   "scripts": {
+    "------------------ RUNNING ------------------": "",
+    "start": "tsx src/main.ts",
+
+    "------------------ BUILDING -----------------": "",
+    "build": "tsc",
+
+    "----------------- DEVELOPMENT ---------------": "",
+    "dev": "tsx watch src/main.ts",
+
     "------------------ TESTING ------------------": "",
     "test": "",
     "test:config": "tsx config/config.ts",
