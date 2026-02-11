@@ -29,14 +29,7 @@ export class CLI {
 
         this.rl.on('line', async (line) => {
             const input = line.trim();
-            
             const [command, ...args] = input.split(' ');
-
-            if (command === "" || !this.commandList.includes(command)) {
-                console.log(`Unknown command: ${command}`);
-                this.rl.prompt();
-                return;
-            }
 
             switch (command) {
                 case 'ask': 
@@ -57,6 +50,7 @@ export class CLI {
                     break;
                 default:
                     console.log(`Unknown command: ${command}`);
+                    console.log(`Available commands: ${this.commandList.join(', ')}`);
             }
 
             this.rl.prompt();
