@@ -67,7 +67,7 @@ export class CLI {
                     await exitCommand(this.rl);
                     break;
                 default:
-                    this.logger.warn(`Unknown command: ${command}` + (this.commandList.includes(command) ? '' : '(type "help" for a list of commands)'));
+                    this.logger.warn(`Unknown command: ${command}` + (this.commandList.includes(command) ? '' : ' (type "help" for a list of commands)'));
             }
 
             this.rl.prompt();
