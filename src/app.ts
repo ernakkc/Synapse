@@ -1,35 +1,40 @@
-// import { startTelegram } from "./interfaces/telegram";
-import { startCLI } from "./interfaces/cli";
-// import { startElectron } from "./interfaces/electron";
+import { spawn } from "child_process";
+import { InterfaceLogger } from "./infrastructure/logging/Logger";
 
+const OSNAME = process.platform.toLowerCase();
+const logger = new InterfaceLogger('system');
 
-
-// TEST FUNCTIONS TO SIMULATE INTERFACE STARTUP
-async function startTelegram() {
-    console.log("Starting Telegram interface...");
-    // Simulate async initialization
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log("Telegram interface started.");
+function startCLI() {
+	if (OSNAME === "darwin") {
+		spawn("osascript", ["-e","tell application \"Terminal\" to do script \"cd '" + process.cwd() + "' && npm run cli\""]);
+	} else if (OSNAME === "win32") {
+		spawn("cmd", ["/c", "start", "npm run cli"]);
+	} else if (OSNAME === "linux") {
+		spawn("gnome-terminal", ["--", "npm", "run", "cli"]);
+	}
+	logger.info("CLI interface launched in a new terminal window.");
 }
 
-async function startElectron() {
-    console.log("Starting Electron interface...");
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    console.log("Electron interface started.");
+function startTelegram() {
+	if (OSNAME === "darwin") {
+		spawn("osascript", ["-e","tell application \"Terminal\" to do script \"cd '" + process.cwd() + "' && npm run telegram\""]);
+	} else if (OSNAME === "win32") {
+		spawn("cmd", ["/c", "start", "npm run telegram"]);
+	} else if (OSNAME === "linux") {
+		spawn("gnome-terminal", ["--", "npm", "run", "telegram"]);
+	}
+	logger.info("Telegram interface launched in a new terminal window.");
 }
 
-
-
-
-
-export async function bootstrap() {
-    console.log("🚀 Synapse starting...");
-
-    await Promise.all([
-        startTelegram(),
-        startCLI(),
-        startElectron(),
-    ]);
-
-    console.log("✅ All interfaces started");
+function startElectron() {
+	if (OSNAME === "darwin") {
+		spawn("osascript", ["-e","tell application \"Terminal\" to do script \"cd '" + process.cwd() + "' && npm run electron\""]);
+	} else if (OSNAME === "win32") {
+		spawn("cmd", ["/c", "start", "npm run electron"]);
+	} else if (OSNAME === "linux") {
+		spawn("gnome-terminal", ["--", "npm", "run", "electron"]);
+	}
+	logger.info("Electron interface launched in a new terminal window.");
 }
+
+export { startCLI, startTelegram, startElectron };

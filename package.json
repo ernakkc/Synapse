@@ -44,13 +44,11 @@
   "scripts": {
     "------------------ RUNNING ------------------": "",
     "start": "tsx src/main.ts",
-
+    "cli": "tsx src/interfaces/cli/index.ts",
     "------------------ BUILDING -----------------": "",
     "build": "tsc",
-
     "----------------- DEVELOPMENT ---------------": "",
     "dev": "tsx watch src/main.ts",
-
     "------------------ TESTING ------------------": "",
     "test": "",
     "test:config": "tsx config/config.ts",
