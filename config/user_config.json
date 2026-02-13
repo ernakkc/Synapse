@@ -8,6 +8,8 @@
         "BASE_URL": "http://localhost:11434"
     },
     "AI_SETTINGS": {
-        "MIN_CONFIDENCE_THRESHOLD": 0.7
+        "MIN_CONFIDENCE_THRESHOLD": 0.7,
+        "TEMPERATURE": 0.7
+        
     }
 }

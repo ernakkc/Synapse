@@ -4,11 +4,6 @@ dotenv.config();
 
 
 function getEnv(key: string): string {
-    if (!process.env[key]) {
-        console.warn(`⚠️  Environment variable ${key} is not set. Using default value.`);
-    } else {
-        console.log(`✅ Loaded environment variable ${key}`);
-    }
     return process.env[key] || "";
 }
 
@@ -25,6 +20,7 @@ const DEFAULT_CONFIG = {
     },
     AI_SETTINGS: {
         MIN_CONFIDENCE_THRESHOLD: 0.7,
+        TEMPERATURE: 0.7
     }
 };
 
@@ -40,5 +36,6 @@ export const CONFIG = {
     },
     AI_SETTINGS: {
         MIN_CONFIDENCE_THRESHOLD: userConfigJson.AI_SETTINGS?.MIN_CONFIDENCE_THRESHOLD || DEFAULT_CONFIG.AI_SETTINGS.MIN_CONFIDENCE_THRESHOLD,
+        TEMPERATURE: userConfigJson.AI_SETTINGS?.TEMPERATURE || DEFAULT_CONFIG.AI_SETTINGS.TEMPERATURE
     }
 };
