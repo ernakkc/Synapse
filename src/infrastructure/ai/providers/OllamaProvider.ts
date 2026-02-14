@@ -43,8 +43,7 @@ export class OllamaProvider implements LLMProvider {
         
         if (responseType === 'json') {
             return JSON.parse(content) as T;
-        }
-        
+        } 
         return content as T | string;
     }
 }

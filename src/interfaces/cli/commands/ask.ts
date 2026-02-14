@@ -17,8 +17,8 @@ async function askCommand(args: string[], logger: any) {
         logger: new InterfaceLogger('cli'),
         approval: requestApprovalFromUser
     });
-    
-    logger.success(`${response}`);
+
+    logger.result(`${response}`);
 }
 
 export { askCommand };

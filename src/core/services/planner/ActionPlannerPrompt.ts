@@ -680,6 +680,7 @@ interface PlanningResult {
     outputs: any[];
     error: string | null;
   };
+  language?: string;
 }
 
 

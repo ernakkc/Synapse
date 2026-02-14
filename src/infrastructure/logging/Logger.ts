@@ -48,7 +48,8 @@ function createColoredFormat(interfaceType: InterfaceType) {
         error: '❌',
         warn: '⚠️ ',
         info: 'ℹ️ ',
-        debug: '🔍'
+        debug: '🔍',
+        result: '💬'
       };
       const icon = icons[level] || '📝';
 
@@ -172,6 +173,10 @@ export class InterfaceLogger {
 
   complete(message: string) {
     this.logger.info(`✨ ${message}`);
+  }
+
+  result(message: string) {
+    this.logger.info(`💬 ${message}`);
   }
 
   // Performans ölçümü

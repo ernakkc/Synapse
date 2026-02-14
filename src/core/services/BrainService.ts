@@ -4,6 +4,8 @@ import { Message } from "../entities/Message";
 import { analyzeMessage } from "./analyzer";
 import { planAction } from "./planner/ActionPlanner";
 
+import { ChatInteraction } from "../../modules/chat_interaction";
+
 export class BrainService {
   private commingMessage: Message | null = null;
   private userMessage: string;
@@ -35,7 +37,7 @@ export class BrainService {
       `📊 Message analysis result:\n` +
       `  🏷️  Type: ${analysisResult.type}\n` +
       `  🎯 Intent: ${analysisResult.intent}\n` +
-      `  📈 Confidence: ${analysisResult.confidence}%\n` +
+      `  📈 Confidence: ${(analysisResult.confidence * 100).toFixed(1)}%\n` +
       `  🔴 Risk Level: ${analysisResult.risk_level}\n` +
       `  🔧 Tool Suggestion: ${analysisResult.tool_suggestion}\n` +
       `  ⚙️  Parameters: ${JSON.stringify(cleanParams, null, 2)}\n` +
@@ -57,6 +59,7 @@ export class BrainService {
     // =========================
     const planningResult = await planAction(analysisResult);
     planningResult.request_id = message.timestamp.toString();
+    planningResult.language = this.resultLanguage;
     message.logger.info(
       `🧠 Action planning result:\n` +
       `  🏷️  Type: ${planningResult.type}\n` +
@@ -69,8 +72,15 @@ export class BrainService {
     // =========================
     // STEP 3: ROTATE RESPONSE
     // =========================
-    
-
+    switch (planningResult.type) {
+      case "WEB_AUTOMATION":
+      case "CHAT_INTERACTION": 
+          message.logger.info("Processing chat interaction");
+          const resultChat = await ChatInteraction(planningResult, analysisResult);
+          return resultChat;
+      case "OTHERS":
+      default: message.logger.warn(`No module available to handle type: ${planningResult.type}`); break;
+    }
 
 
 
