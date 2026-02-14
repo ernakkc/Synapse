@@ -3,4 +3,5 @@ export interface Message {
   content: string;
   timestamp: number;
   logger: any; 
+  approval?: (message: Message, analysisResult: any) => Promise<boolean>;
 }

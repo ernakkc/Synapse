@@ -1,5 +1,6 @@
 import { BrainService } from '../../../core/services/BrainService';
 import { InterfaceLogger } from '../../../infrastructure/logging/Logger';
+import { requestApprovalFromUser } from '../helpers/Approval';
 
 async function askCommand(args: string[], logger: any) {
     const question = args.join(' ');
@@ -13,9 +14,10 @@ async function askCommand(args: string[], logger: any) {
         source: "cli",
         content: question,
         timestamp: Date.now(),
-        logger: new InterfaceLogger('cli')
+        logger: new InterfaceLogger('cli'),
+        approval: requestApprovalFromUser
     });
-
+    
     logger.success(`${response}`);
 }
 

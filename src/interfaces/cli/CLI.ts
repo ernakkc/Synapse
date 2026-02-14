@@ -66,8 +66,8 @@ export class CLI {
                     const { exitCommand } = await import('./commands/exit');
                     await exitCommand(this.rl);
                     break;
-                case 'yes': return;
-                case 'no': return;
+                case 'yes': break;
+                case 'no': break;
                 default:
                     this.logger.warn(`Unknown command: ${command}` + (this.commandList.includes(command) ? '' : ' (type "help" for a list of commands)'));
             }
