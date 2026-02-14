@@ -47,7 +47,7 @@ export class CLI {
             switch (command) {
                 case 'ask':
                     const { askCommand } = await import('./commands/ask');
-                    await askCommand(args , this.logger);
+                    await askCommand(args, this.logger);
                     break;
                 case 'config':
                     const { configCommand } = await import('./commands/config');
@@ -66,11 +66,15 @@ export class CLI {
                     const { exitCommand } = await import('./commands/exit');
                     await exitCommand(this.rl);
                     break;
+                case 'yes': return;
+                case 'no': return;
                 default:
                     this.logger.warn(`Unknown command: ${command}` + (this.commandList.includes(command) ? '' : ' (type "help" for a list of commands)'));
             }
 
             this.rl.prompt();
         });
+
+
     }
 }
