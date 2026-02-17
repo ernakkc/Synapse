@@ -1,3 +1,3 @@
-import { SystemInteraction, SystemInteractionService } from "./SystemInteraction";
+import { SystemInteraction } from "./SystemInteraction";
 
-export { SystemInteraction, SystemInteractionService };
+export { SystemInteraction };

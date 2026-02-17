@@ -79,7 +79,7 @@ export class BrainService {
     // STEP 3: ROTATE RESPONSE
     // =========================
     switch (planningResult.type) {
-      case "WEB_AUTOMATION":
+      case "WEB_AUTOMATION": break;
       // OTHER TYPES 
       default: 
         await SystemInteraction(analysisResult, planningResult);
