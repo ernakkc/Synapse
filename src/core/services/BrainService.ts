@@ -4,8 +4,8 @@ import { Message } from "../entities/Message";
 import { analyzeMessage } from "./analyzer";
 import { planAction } from "./planner/ActionPlanner";
 
-import { ChatInteraction } from "../../modules/chat_interaction";
-
+import { ChatInteraction } from "./executor/chat_interaction/ChatInteraction";
+import { SystemInteraction } from "./executor/system_interaction/SystemInteraction";
 export class BrainService {
   private commingMessage: Message | null = null;
   private userMessage: string;
@@ -80,12 +80,10 @@ export class BrainService {
     // =========================
     switch (planningResult.type) {
       case "WEB_AUTOMATION":
-      case "CHAT_INTERACTION": 
-          message.logger.info("Processing chat interaction");
-          const resultChat = await ChatInteraction(analysisResult);
-          return resultChat;
-      case "OTHERS":
-      default: message.logger.warn(`No module available to handle type: ${planningResult.type}`); break;
+      // OTHER TYPES 
+      default: 
+        await SystemInteraction(analysisResult, planningResult);
+        break;
     }
 
 

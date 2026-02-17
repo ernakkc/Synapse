@@ -1,6 +1,6 @@
-import { PlanningResult } from "../../core/services/planner/ActionPlannerPrompt";
-import { AnalysisResult } from "../../core/services/analyzer/MessageAnalyzerPrompt";
-import { Ai } from "../../infrastructure/ai/Ai";
+import { PlanningResult } from '../../planner/ActionPlannerPrompt';
+import { AnalysisResult } from '../../analyzer/MessageAnalyzerPrompt';
+import { Ai } from "../../../../infrastructure/ai/Ai";
 
 import { CHAT_SYSTEM_PROMPT, ChatInteractionResult } from "./ChatInteractionPrompt";
 
