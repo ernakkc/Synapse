@@ -17,7 +17,7 @@ export class BrainService {
   }
 
   async process(message: Message): Promise<string> {
-    message.logger.info("Processing message:", message.content);
+    message.logger.info("Processing message:", JSON.stringify({ content: message.content, timestamp: message.timestamp }));
     this.commingMessage = message;
     this.userMessage = message.content;
 
@@ -54,6 +54,12 @@ export class BrainService {
       }
     }
 
+    if (analysisResult.type === 'CHAT_INTERACTION') {
+      message.logger.info("Processing chat interaction");
+          const resultChat = await ChatInteraction(analysisResult);
+          return resultChat;
+    }
+
     // =========================
     // STEP 2: ACTION PLANNER
     // =========================
@@ -76,7 +82,7 @@ export class BrainService {
       case "WEB_AUTOMATION":
       case "CHAT_INTERACTION": 
           message.logger.info("Processing chat interaction");
-          const resultChat = await ChatInteraction(planningResult, analysisResult);
+          const resultChat = await ChatInteraction(analysisResult);
           return resultChat;
       case "OTHERS":
       default: message.logger.warn(`No module available to handle type: ${planningResult.type}`); break;
@@ -84,6 +90,6 @@ export class BrainService {
 
 
 
-    return `🤖 BİİTTTİ AMK`;
+    return `🤖 FINISH`;
   }
 }

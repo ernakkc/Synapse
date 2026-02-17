@@ -5,23 +5,14 @@ import { Ai } from "../../infrastructure/ai/Ai";
 import { CHAT_SYSTEM_PROMPT, ChatInteractionResult } from "./ChatInteractionPrompt";
 
 
-export async function ChatInteraction(planningResult: PlanningResult, analysisResult: AnalysisResult): Promise<string> {
+export async function ChatInteraction(analysisResult: AnalysisResult): Promise<string> {
     const ai = new Ai();
 
-    const prompt = `## USER REQUEST
-Original message: "${analysisResult.context.user_text}"
+    const prompt = `User said: "${analysisResult.context.user_text}"
 Language: ${analysisResult.context.language}
-
-## ANALYSIS
 Intent: ${analysisResult.intent}
-Type: ${analysisResult.type}
-Confidence: ${analysisResult.confidence}%
 
-## PLANNING
-Goal: ${planningResult.goal}
-Steps: ${planningResult.steps.length}
-
-Provide a natural response to the user's original message.`;
+Respond naturally to the user. DO NOT explain or analyze their words. Just chat like a friend.`;
 
     const response = await ai.generate<ChatInteractionResult>({
         responseType: 'json',

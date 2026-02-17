@@ -28,11 +28,10 @@ export class OllamaProvider implements LLMProvider {
                 model: CONFIG.OLLAMA.MODEL,
                 messages: [
                     { role: 'system', content: systemPrompt },
-                    { role: 'user', content: prompt },
-                    { role: 'assistant', content: 'Please provide a response based on the system prompt and user prompt.' }
+                    { role: 'user', content: prompt }
                 ],
                 stream: false,
-                format: responseType
+                format: responseType === 'json' ? 'json' : undefined
             });
         } catch (error) {
             console.error('Error occurred while fetching data from Ollama API:', error);
@@ -42,7 +41,21 @@ export class OllamaProvider implements LLMProvider {
         const content = response.message.content;
         
         if (responseType === 'json') {
-            return JSON.parse(content) as T;
+            // Validate content before parsing
+            if (!content || content.trim() === '') {
+                console.error('Ollama returned empty response');
+                console.error('Request details:', { systemPrompt: systemPrompt.substring(0, 200), prompt });
+                throw new Error('Ollama returned empty JSON response');
+            }
+            
+            try {
+                return JSON.parse(content) as T;
+            } catch (parseError) {
+                console.error('Failed to parse JSON from Ollama response');
+                console.error('Raw content:', content);
+                console.error('Parse error:', parseError);
+                throw new Error(`Invalid JSON response from Ollama: ${parseError instanceof Error ? parseError.message : 'Unknown error'}`);
+            }
         } 
         return content as T | string;
     }
