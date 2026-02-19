@@ -1,3 +1,3 @@
-import { analyzeMessage } from "./MessageAnalyzer";
+import { analyzeMessage, MessageAnalyzer } from "./MessageAnalyzer";
 
-export { analyzeMessage };
+export { analyzeMessage, MessageAnalyzer };

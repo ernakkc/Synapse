@@ -82,8 +82,7 @@ export class BrainService {
       case "WEB_AUTOMATION": break;
       // OTHER TYPES 
       default: 
-        await SystemInteraction(analysisResult, planningResult);
-        break;
+        return await SystemInteraction(analysisResult, planningResult);
     }
 
 

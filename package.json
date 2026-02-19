@@ -50,9 +50,14 @@
     "----------------- DEVELOPMENT ---------------": "",
     "dev": "tsx watch src/main.ts",
     "------------------ TESTING ------------------": "",
-    "test": "",
+    "test": "vitest run",
+    "test:unit": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui",
     "test:config": "tsx config/config.ts",
-    "test:logger": "tsx tests/logger_test.ts"
+    "test:logger": "tsx tests/logger.test.ts"
   },
   "dependencies": {
     "dotenv": "^17.2.4",
@@ -60,7 +65,11 @@
   },
   "devDependencies": {
     "@types/node": "^25.2.2",
+    "@vitest/coverage-v8": "^4.0.18",
     "tsx": "^4.21.0",
     "winston": "^3.19.0"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-darwin-x64": "^4.57.1"
   }
 }
