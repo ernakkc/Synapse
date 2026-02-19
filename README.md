@@ -394,7 +394,7 @@ await runner.runParallel(['cmd1', 'cmd2', 'cmd3']);
 
 ```bash
 # Repoyu klonlayın
-git clone <repo-url> synapse
+git clone https://github.com/ernakkc/synapse.git
 cd synapse
 
 # Bağımlılıkları yükleyin
