@@ -29,7 +29,9 @@
       "@modules/*": ["src/modules/*"],
       "@interfaces/*": ["src/interfaces/*"],
       "@shared/*": ["src/shared/*"]
-    }
+    },
+    
+    "types": ["vitest/globals", "node"]
   },
   "include": ["src/**/*", "config/**/*"],
   "exclude": ["node_modules", "dist"]

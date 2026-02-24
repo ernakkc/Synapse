@@ -80,7 +80,7 @@ Execute the actions and return a summary of what was done.`;
                             console.log(`   Output: ${result.stdout.substring(0, 200)}${result.stdout.length > 200 ? '...' : ''}`);
                         }
                     } else {
-                        console.log(`❌ Failed (${result.executionTime}ms)`);
+                        console.log(`⚠️ Command failed (${result.executionTime}ms)`);
                         console.log(`   Error: ${result.stderr}`);
                         allSuccessful = false;
                         

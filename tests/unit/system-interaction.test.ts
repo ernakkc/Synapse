@@ -270,10 +270,34 @@ describe('SystemInteractionService', () => {
       };
 
       const filePlan: PlanningResult = {
+        type: 'OTHERS',
+        goal: 'Create test file',
+        status: 'PLANNED',
+        risk_level: 'LOW',
+        strategy: {
+          mode: 'SEQUENTIAL',
+          stop_on_error: true
+        },
         steps: [
-          { action: 'CREATE_FILE', path: fileAnalysis.parameters.path }
-        ]
-      } as PlanningResult;
+          {
+            step_id: 1,
+            name: 'Create file',
+            type: 'FILE_OPERATION',
+            intent: 'CREATE_FILE',
+            tool: 'terminal',
+            blocking: true,
+            timeout_ms: 5000,
+            parameters: { path: fileAnalysis.parameters.path },
+            on_success: { next_step: null },
+            on_failure: { action: 'STOP', retry_count: 0, fallback_message: 'Failed' }
+          }
+        ],
+        result: {
+          success: false,
+          outputs: [],
+          error: null
+        }
+      };
 
       const commands = await service.generateCommands(fileAnalysis, filePlan);
       const result = await service.executeCommands(commands.commands);
