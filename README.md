@@ -32,12 +32,13 @@ Synapse, kullanıcıların doğal dil komutlarıyla sistem işlemleri yapabilmes
 - ✅ SystemInteraction - AI-powered command execution
 - ✅ CommandRunner - Advanced terminal management
 - ✅ Multi-provider AI support (Ollama, OpenAI, Anthropic)
+- ✅ **Memory System** - Three-tier memory architecture (Short/Long/Episodic)
 
 **Planlanan Özellikler**:
 - 🔜 Telegram Bot interface
 - 🔜 Electron Desktop Application
 - 🔜 Web automation capabilities
-- 🔜 Memory & context persistence
+- 🔜 Vector-based semantic memory search
 - 🔜 Multi-user support
 
 ### Temel Özellikler
@@ -51,6 +52,7 @@ Synapse, kullanıcıların doğal dil komutlarıyla sistem işlemleri yapabilmes
 - 🖥️ **Advanced Command Execution**: Persistent terminal sessions ile güçlü komut çalıştırma
 - 🤖 **AI-Powered Commands**: LLM ile otomatik komut üretimi ve execution
 - 🎯 **Smart Message Analysis**: Gelişmiş intent detection ve context-aware responses
+- 🧠 **Three-Tier Memory System**: Short-term, long-term, and episodic memory for contextual awareness
 
 ## 🏛️ Mimari Prensipler
 

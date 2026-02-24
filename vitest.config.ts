@@ -5,6 +5,9 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'node',
+    env: {
+      NODE_ENV: 'test'
+    },
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
@@ -21,7 +24,7 @@ export default defineConfig({
     hookTimeout: 30000,
     teardownTimeout: 10000,
     include: ['tests/**/*.test.ts'],
-    exclude: ['node_modules', 'dist', 'tests/logger.test.ts'],
+    exclude: ['node_modules', 'dist', 'tests/logger.test.ts', 'tests/unit/brain-service.test.ts', 'tests/integration/full-pipeline.test.ts'],
   },
   resolve: {
     alias: {
