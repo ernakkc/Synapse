@@ -69,8 +69,5 @@
     "tsx": "^4.21.0",
     "vitest": "^4.0.18",
     "winston": "^3.19.0"
-  },
-  "optionalDependencies": {
-    "@rollup/rollup-darwin-x64": "^4.57.1"
   }
 }
