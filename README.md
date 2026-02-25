@@ -1,21 +1,22 @@
-# 🧠 Synapse - AI Native Enterprise Architecture
+# 🧠 Synapse
 
-> Modern, ölçeklenebilir ve framework-bağımsız AI asistan platformu
+> AI-powered assistant with intelligent memory system and natural language command execution
 
-## 📋 İçindekiler
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
-- [Genel Bakış](#-genel-bakış)
-- [Mimari Prensipler](#-mimari-prensipler)
-- [Klasör Yapısı](#-klasör-yapısı)
-- [Core Systems Architecture](#-core-systems-architecture)
-- [Kurulum](#-kurulum)
-- [Geliştirme](#-geliştirme)
-- [Usage Examples](#-usage-examples)
-- [Test](#-test)
-- [Deployment](#-deployment)
-- [Kullanılan Teknolojiler](#-kullanılan-teknolojiler)
-- [Key Features Summary](#-key-features-summary)
-- [Katkıda Bulunma](#-katkıda-bulunma)
+## ✨ Features
+
+- 🧠 **Three-Tier Memory System**: Short-term, long-term, and episodic memory with SQLite persistence
+- 🤖 **AI-Powered Command Execution**: Natural language to system commands
+- 💬 **Intelligent Chat**: Context-aware conversational responses
+- 🎯 **Intent Detection**: Advanced NLP for understanding user requests
+- 📊 **Action Planning**: Smart task breakdown and execution
+- 🔌 **Multi-Provider LLM**: Support for Ollama, OpenAI, and Anthropic
+- 🖥️ **Cross-Platform**: Windows, macOS, and Linux support
+- 🏗️ **Clean Architecture**: Separation of concerns with DDD principles
 
 ## 🎯 Genel Bakış
 

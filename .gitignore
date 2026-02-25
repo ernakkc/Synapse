@@ -55,6 +55,7 @@ Desktop.ini
 *.sqlite
 *.sqlite3
 data/
+!data/.gitkeep
 *.db-journal
 
 # Cache & Temp

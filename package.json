@@ -1,24 +1,22 @@
 {
   "name": "synapse",
   "version": "1.0.0",
-  "description": "> Synapse is an AI-powered assistant that provides intelligent responses to user queries. Cross-platform AI Assistant with centralized brain architecture built on Electron, React & TypeScript.",
+  "description": "AI-powered assistant with intelligent memory system and natural language command execution",
   "keywords": [
     "ai",
     "assistant",
     "clean-architecture",
-    "enterprise",
-    "electron",
-    "telegram",
-    "typescript",
-    "modular",
-    "pluggable",
+    "llm",
+    "ollama",
     "openai",
     "anthropic",
-    "ollama",
+    "typescript",
+    "memory-system",
+    "sqlite",
+    "cli",
     "cross-platform",
-    "event-driven",
-    "ddd",
-    "solid"
+    "nlp",
+    "command-execution"
   ],
   "homepage": "https://github.com/ernakkc/Synapse#readme",
   "bugs": {
