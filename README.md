@@ -2,10 +2,13 @@
 
 > AI-powered assistant with intelligent memory system and natural language command execution
 
+[![GitHub](https://img.shields.io/badge/GitHub-ernakkc%2FSynapse-181717?style=for-the-badge&logo=github)](https://github.com/ernakkc/Synapse)
+[![CI](https://img.shields.io/github/actions/workflow/status/ernakkc/Synapse/ci.yml?branch=main&style=for-the-badge&logo=github-actions&label=CI)](https://github.com/ernakkc/Synapse/actions)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 [![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)](https://www.sqlite.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Documentation](https://img.shields.io/badge/Docs-GitHub%20Pages-blue?style=for-the-badge&logo=github)](https://ernakkc.github.io/Synapse/)
 
 ## ✨ Features
 
