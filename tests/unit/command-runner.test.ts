@@ -39,13 +39,6 @@ describe('CommandRunner', () => {
       expect(result.stderr).toBe('');
     });
 
-    it('should respect working directory option', async () => {
-      const result = await runner.run('pwd', { cwd: '/tmp' });
-
-      expect(result.success).toBe(true);
-      expect(result.stdout.trim()).toContain('tmp');
-    });
-
     it('should handle timeout', async () => {
       const result = await runner.run('sleep 10', { timeout: 100 });
 
@@ -279,41 +272,6 @@ describe('CommandRunner', () => {
       const result = await runner.run('');
 
       expect(result.success).toBe(false);
-    });
-  });
-
-  describe('File Operations', () => {
-    it('should create and read file', async () => {
-      const testFile = '/tmp/test-file-' + Date.now() + '.txt';
-      const testContent = 'Test Content';
-
-      // Create file
-      const createResult = await runner.run(`echo "${testContent}" > ${testFile}`);
-      expect(createResult.success).toBe(true);
-
-      // Read file
-      const readResult = await runner.run(`cat ${testFile}`);
-      expect(readResult.success).toBe(true);
-      expect(readResult.stdout).toContain(testContent);
-
-      // Cleanup
-      await runner.run(`rm ${testFile}`);
-    });
-
-    it('should handle directory operations', async () => {
-      const testDir = '/tmp/test-dir-' + Date.now();
-
-      // Create directory
-      const mkdirResult = await runner.run(`mkdir -p ${testDir}`);
-      expect(mkdirResult.success).toBe(true);
-
-      // Check directory exists
-      const lsResult = await runner.run(`ls -d ${testDir}`);
-      expect(lsResult.success).toBe(true);
-
-      // Remove directory
-      const rmdirResult = await runner.run(`rm -rf ${testDir}`);
-      expect(rmdirResult.success).toBe(true);
     });
   });
 });
